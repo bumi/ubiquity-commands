@@ -23,7 +23,7 @@ File.open(src) do |fsrc|
   body_text_template = fsrc.read
   body_text = ERB.new(body_text_template).result(binding)
   
-  ubiquity_file = "/#{File.dirname(src)}/#{File.dirname(src)}.ubiquity.js"
+  ubiquity_file = "#{File.dirname(src)}.ubiquity.js"
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
   body = RedCloth.new(body_text).to_html
 end
