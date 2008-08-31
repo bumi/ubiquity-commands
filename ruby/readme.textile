@@ -1,0 +1,9 @@
+h1. Ruby Doc
+
+Search ruby functions documentation. 
+Uses http://apidock.com
+
+h2. Source
+
+I've found this script on 'gist':http://gist.github.com/8135
+It is by Jack Dempsey - http://jackndempsey.blogspot.com
