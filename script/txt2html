@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# inspired by and borrowed from the awesome newgem http://newgem.rubyforge.org/ Gem Generator by Dr Nic http://www.drnicwilliams.com/
+require 'rubygems'
+require 'redcloth'
+require 'erb'
+
+if ARGV.length >= 1
+  src, template = ARGV
+  template ||= File.join(File.dirname(__FILE__), '/../ubiquity.html.erb')
+else
+  puts("Usage: #{File.split($0).last} source.txt [template.html.erb] > output.html")
+  exit!
+end
+
+template = ERB.new(File.open(template).read)
+
+title = nil
+body = nil
+ubiquity_file = nil
+File.open(src) do |fsrc|
+  title_text = fsrc.readline
+  body_text_template = fsrc.read
+  body_text = ERB.new(body_text_template).result(binding)
+  
+  ubiquity_file = "/#{File.dirname(src)}/#{File.dirname(src)}.ubiquity.js"
+  title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
+  body = RedCloth.new(body_text).to_html
+end
+stat = File.stat(src)
+created = stat.ctime
+modified = stat.mtime
+
+$stdout << template.result(binding)
