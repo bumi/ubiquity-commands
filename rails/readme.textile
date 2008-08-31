@@ -1,0 +1,10 @@
+h1. Rails Doc
+
+Search rails functions documentation. 
+Uses http://apidock.com
+
+I will extend this with inline function selection in the future.
+
+h2. Source
+
+This is based on: http://gist.github.com/8135 by Jack Dempsey - http://jackndempsey.blogspot.com
