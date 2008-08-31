@@ -18,11 +18,13 @@ template = ERB.new(File.open(template).read)
 title = nil
 body = nil
 ubiquity_file = nil
+name = nil
 File.open(src) do |fsrc|
   title_text = fsrc.readline
   body_text_template = fsrc.read
   body_text = ERB.new(body_text_template).result(binding)
   
+  name = "#{File.dirname(src)}"
   ubiquity_file = "#{File.dirname(src)}.ubiquity.js"
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
   body = RedCloth.new(body_text).to_html

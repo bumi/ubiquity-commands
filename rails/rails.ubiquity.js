@@ -11,8 +11,8 @@ CmdUtils.CreateCommand({
      },
      preview: function(pblock, directObject)
      {
-         searchText = jQuery.trim(directObject.text);
-         if(searchText.length <= 0)
+         var query = jQuery.trim(directObject.text);
+         if(query.length <= 0)
          	return;
          pblock.innerHTML = "Search rails documentation for:" + query;
      }
