@@ -5,7 +5,8 @@ CmdUtils.CreateCommand({
   homepage: "http://railslove.com",
   author: {name: "Michael Bumann", email: "michael@railslove.com"},
   description: "Create a twicture.es for a twitter post",
-  template: '<div class="twicture" style="height:200px"><strong><a href="${pictureUrl}">${pictureUrl}</a></strong><br /> <a href="${pictureUrl}"><img src="${pictureUrl}" alt="Twitter ${statusId}" /></a></div>',
+	// TODO: refactore this HTML + JS and add some styles
+  template: '<div class="twicture" style="height:200px"><strong><a href="${pictureUrl}">${pictureUrl}</a></strong> [<span style="cursor:pointer" class="copy_notice" onclick="var gClipboardHelper = Components.classes[\'@mozilla.org/widget/clipboardhelper;1\'].getService(Components.interfaces.nsIClipboardHelper);gClipboardHelper.copyString(\'${pictureUrl}\');alert(\'${pictureUrl} copied to clipboard.\')">copy</span>]<br /> <a href="${pictureUrl}"><img src="${pictureUrl}" alt="Twitter ${statusId}" /></a></div>',
 	_getStatusId: function(input) {
 		input = input || "";
 		if(input.length < 1) {
@@ -33,6 +34,8 @@ CmdUtils.CreateCommand({
   preview: function(pblock, command) {
 		var inputText = jQuery.trim(command.text);
 		var statusID = this._getStatusId(inputText);
+		if(!statusID)
+			return;
 		var pictureUrl = this._pictureUrlFor(statusID);
 		pblock.innerHTML = CmdUtils.renderTemplate(this.template, {statusID: statusID, pictureUrl:pictureUrl});
 	}	
