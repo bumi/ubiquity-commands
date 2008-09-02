@@ -1,0 +1,10 @@
+h1. twictur.es
+
+This is a Ubiquity command for the awesome twictur.es service. 
+It takes a Twitter status Url or ID to a twictur (by default it uses the current url) and turns it into a nice picture. 
+Execute the command to send the picture URL to your current selection.
+
+h2. About twictur.es
+
+twictur.es was built by "Shay Arnett":http://shayarnett.com .
+Everyone knows twitter has it's ups and downs, and sometimes you want to be able to reference a tweet away from twitter. twictur.es allows you to create an image you can embed just about anywhere, that is not reliant on twitter's availability.
